@@ -33,8 +33,9 @@ pnpm run lint
 
 [x] Initialize app using [T3 stack](https://create.t3.gg/)
 [x] Render the board with dog and lion images
+[x] Implement core game functionality
+[ ] Add winning screen
 [ ] Set background image
-[ ] Implement core game functionality
 [ ] Add badges in readme
 [ ] Deploy to vercel
 [ ] Add about page
@@ -54,7 +55,7 @@ Dog: Photo by <a href="https://unsplash.com/@jaclynclark?utm_content=creditCopyT
 
 Lion: Photo by <a href="https://unsplash.com/@mariolagr?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">MARIOLA GROBELSKA</a> on <a href="https://unsplash.com/photos/lion-in-black-background-in-grayscale-photography-8a7ZTFKax_I?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 
-Forest: Photo by <a href="https://www.pexels.com/photo/trees-near-pathway-1102912">Johannes Plenio</a>
+Photo by <a href="https://unsplash.com/@rosiesun?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Rosie Sun</a> on <a href="https://unsplash.com/photos/photography-of-forest-1L71sPT5XKc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 
 ### Contributions
 
