@@ -1,8 +1,8 @@
 # Conquer Island Revamped
 
-The game consists on eliminating all the lions on the board.<br>
+Conquer the island by defeating all the lions on the board.<br>
 Clicking on a tile makes it change from lion to dog or viceversa.<br>
-The effect also applies to adjacent tiles.<br>
+Adjacent tiles are also flipped.<br>
 This game was inspired by the [Lights out](https://en.wikipedia.org/wiki/Lights_Out_(game)) game and is a revamp of the game I made back in 2020 using Vue 2 and bootstrap Vue (js ecosystem has changed a lot indeed) [Conquer Island](https://github.com/luisthedragon/conquer-island)
 
 ## Project setup
@@ -53,6 +53,8 @@ Thanks a lot to the authors of the images from Unsplash:
 Dog: Photo by <a href="https://unsplash.com/@jaclynclark?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jaclyn Clark</a> on <a href="https://unsplash.com/photos/short-coated-black-and-white-dog-UzO4kgBMCv4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 
 Lion: Photo by <a href="https://unsplash.com/@mariolagr?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">MARIOLA GROBELSKA</a> on <a href="https://unsplash.com/photos/lion-in-black-background-in-grayscale-photography-8a7ZTFKax_I?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+
+Forest: Photo by <a href="https://www.pexels.com/photo/trees-near-pathway-1102912">Johannes Plenio</a>
 
 ### Contributions
 
