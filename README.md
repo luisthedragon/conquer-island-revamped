@@ -34,8 +34,8 @@ pnpm run lint
 [x] Initialize app using [T3 stack](https://create.t3.gg/)
 [x] Render the board with dog and lion images
 [x] Implement core game functionality
-[ ] Add winning screen
-[ ] Set background image
+[x] Add winning screen
+[x] Set background image
 [ ] Add badges in readme
 [ ] Deploy to vercel
 [ ] Add about page
