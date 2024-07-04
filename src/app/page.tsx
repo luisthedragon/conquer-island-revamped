@@ -38,19 +38,19 @@ export default function HomePage() {
   // Set state as desired (used for testing specific positions)
   const setTestState = () => {
     // 3x3 board
-    // const newBoard = [
-    //   [1, 1, 1],
-    //   [1, 1, 0],
-    //   [1, 0, 0],
-    // ];
+    const newBoard = [
+      [1, 1, 1],
+      [1, 1, 0],
+      [1, 0, 0],
+    ];
 
     // 4x4 board
-    const newBoard = [
-      [1, 0, 1, 1],
-      [0, 0, 0, 1],
-      [1, 0, 1, 1],
-      [1, 1, 1, 1],
-    ];
+    // const newBoard = [
+    //   [1, 0, 1, 1],
+    //   [0, 0, 0, 1],
+    //   [1, 0, 1, 1],
+    //   [1, 1, 1, 1],
+    // ];
     setBoard(newBoard);
   };
 
@@ -131,11 +131,11 @@ export default function HomePage() {
     ));
   };
 
-  const renderWinnerScreen = () => (
-    <div className="fixed inset-0 z-10 flex scale-150 items-center justify-center transition delay-150 duration-1000 ease-in-out">
+  const renderWinnerScreen = () => ( 
+    <div className="fixed inset-0 z-10 flex flex-col md:flex-row scale-150 items-center justify-center transition delay-150 duration-1000 ease-in-out">
       <div className="">
         <div
-          className="h-24 w-24 bg-cover"
+          className="h-20 w-20 md:h-24 md:w-24 bg-cover"
           style={{
             backgroundImage: `url(${getImageUrl(1)})`,
             backgroundSize: "cover",
@@ -144,7 +144,7 @@ export default function HomePage() {
       </div>
       <div className="fixed-top-left">
         <div className="p-2">
-          <h1 className="m-auto text-white">
+          <h1 className="m-auto text-white text-center w-28 md:w-max">
             Congrats! You have defeated the lions!!
           </h1>
         </div>

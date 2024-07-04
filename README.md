@@ -36,15 +36,16 @@ pnpm run lint
 - [x] Implement core game functionality
 - [x] Add winning screen
 - [x] Set background image
-- [ ] Add badges in readme
-- [ ] Deploy to vercel
-- [ ] Add about page
-- [ ] Make sure mobile experience is great!
-- [ ] Add highscores and counter
+- [x] Deploy to vercel
+- [x] Make sure mobile experience is great!
+- [ ] Add counter of clics
+- [ ] Add highscores
 - [ ] Add login to save highscores per account
 - [ ] Improve seeding (Unique seed per board configuration)
 - [ ] Add support for creating bigger boards
+- [ ] Add about page
 - [ ] Multiplayer mode
+- [ ] Add badges in readme
 - [ ] More awesome features!
 
 ### Acknowledgments
