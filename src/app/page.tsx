@@ -9,6 +9,8 @@ export default function HomePage() {
   const [board, setBoard] = useState<number[][]>([]);
   const [winner, setWinner] = useState(false);
   const [nmoves, setNMoves] = useState(0);
+  const [inputSeed, setInputSeed] = useState(Math.floor(Math.random() * MAX_SEED_VALUE))
+  const [seed, setSeed] = useState(inputSeed)
 
   // We compute the winning state so that we can check if we won later
   const winningState: number[][] = [];
@@ -20,13 +22,14 @@ export default function HomePage() {
     // We initialize a random board with the calculated seed
     setRandomState();
     // setTestState();
-  }, []); // Make sure this code runs only one to avoid entering an infinite loop (TODO: Check if there's a better way of doing this or this is the standard)
+  }, [seed]); // Make sure this code runs only once to avoid entering an infinite loop (TODO: Check if there's a better way of doing this or this is the standard)
 
   console.log("board");
   console.log(board);
 
   const setRandomState = () => {
-    const seed = Math.floor(Math.random() * MAX_SEED_VALUE);
+    console.log('seed');
+    console.log(seed)
     const rng = seedrandom(seed + "");
     const newBoard = [];
     for (let i = 0; i < nrows; i++) {
@@ -34,6 +37,7 @@ export default function HomePage() {
     }
     setBoard(newBoard);
     console.log("Server-side board:", newBoard);
+    setNMoves(0);
   };
 
   // Set state as desired (used for testing specific positions)
@@ -61,7 +65,7 @@ export default function HomePage() {
       : "sprites/squared/lion.jpg";
   };
 
-  const handleClick = (rowIndex: number, colIndex: number) => {
+  const handleTileClick = (rowIndex: number, colIndex: number) => {
     setNMoves(nmoves + 1);
     console.log(`row: ${rowIndex} col: ${colIndex}`);
     console.log(board);
@@ -76,6 +80,23 @@ export default function HomePage() {
     setWinner(checkWinner());
     console.log(`Winner?: ${winner}`);
   };
+
+  const handleStartGameFromSeed = () => {
+    setSeed(inputSeed)  
+  }
+
+  const handleStartRandomGame = () => {
+    const newSeed = Math.floor(Math.random() * MAX_SEED_VALUE)
+    setInputSeed(newSeed);
+    setSeed(newSeed);
+
+    
+
+    // Este codigo no funciona, ahi la explicación
+    // const newSeed = Math.floor(Math.random() * MAX_SEED_VALUE)
+    // setInputSeed(newSeed); // Actualizando InputSeed (se ejecuta en el siguiente render)
+    // setSeed(inputSeed); // Actualizando seed con el valor de inputSeed (No funciona porque inputSeed aun no se ha vuelto a renderizar)
+  }
 
   interface Position {
     row: number;
@@ -121,7 +142,7 @@ export default function HomePage() {
         {row.map((cell, columnIndex) => (
           <div
             key={columnIndex}
-            onClick={() => handleClick(rowIndex, columnIndex)}
+            onClick={() => handleTileClick(rowIndex, columnIndex)}
             className="flex h-24 w-24 cursor-pointer items-center justify-center p-2"
             style={{
               backgroundImage: `url(${getImageUrl(cell)})`,
@@ -165,6 +186,21 @@ export default function HomePage() {
         {!winner ? (
           <>
             <div className="text-center">
+              <div className="mb-4">
+                <label className="text-white" htmlFor="seed">
+                  Insert a game seed to start from an specific board configuration
+                </label>
+                <br />
+                <input className="my-2 shadow appearance-none border rounded py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" id="username" type="number" placeholder="Seed" value={inputSeed} onChange={e => setInputSeed(parseInt(e.target.value || '0'))} />
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={handleStartGameFromSeed}>
+                    Start game from seed
+                  </button>
+                  <button className="bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={handleStartRandomGame}>
+                    Start random game
+                  </button>
+                </div>
+              </div>
               <p className="pb-5">Current moves: {nmoves}</p>
               <h2>You are in the dogs&apos; team.</h2>
               <h3>
@@ -180,3 +216,4 @@ export default function HomePage() {
     </main>
   );
 }
+

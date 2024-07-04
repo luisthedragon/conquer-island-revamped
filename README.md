@@ -39,9 +39,10 @@ pnpm run lint
 - [x] Deploy to vercel
 - [x] Make sure mobile experience is great!
 - [x] Add counter of clics
+- [x] Add seed input
+- [ ] Improve seeding (Unique seed per board configuration)
 - [ ] Add highscores
 - [ ] Add login to save highscores per account
-- [ ] Improve seeding (Unique seed per board configuration)
 - [ ] Add support for creating bigger boards
 - [ ] Add about page
 - [ ] Multiplayer mode
