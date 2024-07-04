@@ -40,8 +40,9 @@ pnpm run lint
 - [x] Make sure mobile experience is great!
 - [x] Add counter of clics
 - [x] Add seed input
-- [ ] Add play again button on winner page
+- [x] Add play again button on winner page
 - [ ] Show number of moves and seed on winner page
+- [ ] Add game seed in url
 - [ ] Show share button on winner page
 - [ ] Add github link to source code
 - [ ] Improve seeding (Unique seed per board configuration)

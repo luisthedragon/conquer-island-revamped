@@ -27,6 +27,10 @@ export default function HomePage() {
   console.log("board");
   console.log(board);
 
+  const reloadPage = () => {
+    window.location.reload();
+  }
+
   const setRandomState = () => {
     console.log('seed');
     console.log(seed)
@@ -82,15 +86,13 @@ export default function HomePage() {
   };
 
   const handleStartGameFromSeed = () => {
-    setSeed(inputSeed)  
+    setSeed(inputSeed)
   }
 
   const handleStartRandomGame = () => {
     const newSeed = Math.floor(Math.random() * MAX_SEED_VALUE)
     setInputSeed(newSeed);
     setSeed(newSeed);
-
-    
 
     // Este codigo no funciona, ahi la explicación
     // const newSeed = Math.floor(Math.random() * MAX_SEED_VALUE)
@@ -155,7 +157,7 @@ export default function HomePage() {
   };
 
   const renderWinnerScreen = () => (
-    <div className="fixed inset-0 z-10 flex flex-col md:flex-row scale-150 items-center justify-center transition delay-150 duration-1000 ease-in-out">
+    <div className="fixed inset-0 z-10 flex flex-col scale-150 items-center justify-center transition delay-150 duration-1000 ease-in-out">
       <div className="">
         <div
           className="h-20 w-20 md:h-24 md:w-24 bg-cover"
@@ -167,11 +169,12 @@ export default function HomePage() {
       </div>
       <div className="fixed-top-left">
         <div className="p-2">
-          <h1 className="m-auto text-white text-center w-28 md:w-max">
+          <h1 className="m-auto text-white text-center w-28 md:w-max mb-2">
             Congrats! You have defeated the lions!!
           </h1>
         </div>
       </div>
+      <button className="bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={reloadPage}>Play again!</button>
     </div>
   );
 
