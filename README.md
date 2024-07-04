@@ -38,7 +38,7 @@ pnpm run lint
 - [x] Set background image
 - [x] Deploy to vercel
 - [x] Make sure mobile experience is great!
-- [ ] Add counter of clics
+- [x] Add counter of clics
 - [ ] Add highscores
 - [ ] Add login to save highscores per account
 - [ ] Improve seeding (Unique seed per board configuration)

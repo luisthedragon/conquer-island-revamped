@@ -8,6 +8,7 @@ export default function HomePage() {
   const ncols = 3;
   const [board, setBoard] = useState<number[][]>([]);
   const [winner, setWinner] = useState(false);
+  const [nmoves, setNMoves] = useState(0);
 
   // We compute the winning state so that we can check if we won later
   const winningState: number[][] = [];
@@ -61,6 +62,7 @@ export default function HomePage() {
   };
 
   const handleClick = (rowIndex: number, colIndex: number) => {
+    setNMoves(nmoves + 1);
     console.log(`row: ${rowIndex} col: ${colIndex}`);
     console.log(board);
 
@@ -131,7 +133,7 @@ export default function HomePage() {
     ));
   };
 
-  const renderWinnerScreen = () => ( 
+  const renderWinnerScreen = () => (
     <div className="fixed inset-0 z-10 flex flex-col md:flex-row scale-150 items-center justify-center transition delay-150 duration-1000 ease-in-out">
       <div className="">
         <div
@@ -162,13 +164,14 @@ export default function HomePage() {
       <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
         {!winner ? (
           <>
-            <div className="home">
+            <div className="text-center">
+              <p className="pb-5">Current moves: {nmoves}</p>
               <h2>You are in the dogs&apos; team.</h2>
               <h3>
                 <b>Mission:</b> Defeat the lions by dominating the island.
               </h3>
             </div>
-            <div className="">{renderBoard()}</div>
+            <div>{renderBoard()}</div>
           </>
         ) : (
           renderWinnerScreen()
