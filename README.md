@@ -43,7 +43,8 @@ pnpm run lint
 - [x] Add play again button on winner page
 - [x] Show number of moves and seed on winner page
 - [x] Fix bug when clicking tile in a 4x4 or bigger board, it does not flip correctly
-- [ ] Add board size input
+- [x] Add board size selector 
+- [x] Fix image size, it overflows on mobile
 - [ ] Add game seed in url
 - [ ] Show share button on winner page
 - [ ] Add github link to source code

@@ -4,25 +4,24 @@ import seedrandom from "seedrandom";
 
 export default function HomePage() {
   const MAX_SEED_VALUE = 1000000000;
-  const nrows = 3;
-  const ncols = 3;
   const [board, setBoard] = useState<number[][]>([]);
   const [winner, setWinner] = useState(false);
   const [nmoves, setNMoves] = useState(0);
   const [inputSeed, setInputSeed] = useState(Math.floor(Math.random() * MAX_SEED_VALUE))
-  const [seed, setSeed] = useState(inputSeed)
+  const [seed, setSeed] = useState(inputSeed);
+  const [boardSize, setBoardSize] = useState(3);
 
   // We compute the winning state so that we can check if we won later
   const winningState: number[][] = [];
-  for (let i = 0; i < nrows; i++) {
-    winningState.push(new Array(ncols).fill(1) as number[]);
+  for (let i = 0; i < boardSize; i++) {
+    winningState.push(new Array(boardSize).fill(1) as number[]);
   }
 
   useEffect(() => {
     // We initialize a random board with the calculated seed
     setRandomState();
     // setTestState();
-  }, [seed]); // Make sure this code runs only once to avoid entering an infinite loop (TODO: Check if there's a better way of doing this or this is the standard)
+  }, [seed, boardSize]); // Make sure this code runs only once to avoid entering an infinite loop (TODO: Check if there's a better way of doing this or this is the standard)
 
   console.log("board");
   console.log(board);
@@ -36,8 +35,8 @@ export default function HomePage() {
     console.log(seed)
     const rng = seedrandom(seed + "");
     const newBoard = [];
-    for (let i = 0; i < nrows; i++) {
-      newBoard.push(new Array(ncols).fill(1).map(() => (rng() >= 0.5 ? 1 : 0)));
+    for (let i = 0; i < boardSize; i++) {
+      newBoard.push(new Array(boardSize).fill(1).map(() => (rng() >= 0.5 ? 1 : 0)));
     }
     setBoard(newBoard);
     console.log("Server-side board:", newBoard);
@@ -112,11 +111,11 @@ export default function HomePage() {
       adjIndexes = [...adjIndexes, { row: rowIndex - 1, col: colIndex }];
     }
     // RIGHT
-    if (colIndex <= ncols - 2) {
+    if (colIndex <= boardSize - 2) {
       adjIndexes = [...adjIndexes, { row: rowIndex, col: colIndex + 1 }];
     }
     // DOWN
-    if (rowIndex <= nrows - 2) {
+    if (rowIndex <= boardSize - 2) {
       adjIndexes = [...adjIndexes, { row: rowIndex + 1, col: colIndex }];
     }
     // LEFT
@@ -128,8 +127,8 @@ export default function HomePage() {
 
   const checkWinner = () => {
     // check if both the board and the winning state are the same. (i.e [[1 1 1...],[1 1 1...],...])
-    for (let i = 0; i < nrows; i++) {
-      for (let j = 0; j < ncols; j++) {
+    for (let i = 0; i < boardSize; i++) {
+      for (let j = 0; j < boardSize; j++) {
         if (board[i]![j] !== winningState[i]![j]) {
           return false;
         }
@@ -140,12 +139,12 @@ export default function HomePage() {
 
   const renderBoard = () => {
     return board.map((row, rowIndex) => (
-      <div key={rowIndex} className="flex flex-row">
+      <div key={rowIndex} className="flex flex-row w-72 h-24" style={{ height: `calc( 18rem / ${boardSize})` }}>
         {row.map((cell, columnIndex) => (
           <div
             key={columnIndex}
             onClick={() => handleTileClick(rowIndex, columnIndex)}
-            className="flex h-24 w-24 cursor-pointer items-center justify-center p-2"
+            className="flex h-full w-full cursor-pointer items-center justify-center p-2"
             style={{
               backgroundImage: `url(${getImageUrl(cell)})`,
               backgroundSize: "cover",
@@ -187,16 +186,22 @@ export default function HomePage() {
         backgroundImage: 'url("sprites/og/forest_og.jpg")',
       }}
     >
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
+      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
         {!winner ? (
           <>
             <div className="text-center">
               <div className="mb-4">
-                <label className="text-white" htmlFor="seed">
+                <label htmlFor="boardSize" className="block" >Choose the board size</label>
+                <select value={boardSize} name="boardSize" className="bg-slate-500 my-2 shadow rounded py-2 px-3 text-white focus:outline-none focus:shadow-outline" id="boardSize" onChange={e => setBoardSize(parseInt(e.target.value))}>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+                <label className="text-white block" htmlFor="seed">
                   Insert a game seed to start from an specific board configuration
                 </label>
-                <br />
-                <input className="my-2 shadow appearance-none border rounded py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" id="username" type="number" placeholder="Seed" value={inputSeed} onChange={e => setInputSeed(parseInt(e.target.value || '0'))} />
+                <input className="bg-transparent my-2 shadow appearance-none rounded py-2 px-3 text-white border border-white focus:outline-none focus:shadow-outline" id="username" type="number" placeholder="Seed" value={inputSeed} onChange={e => setInputSeed(parseInt(e.target.value || '0'))} />
                 <div className="flex flex-wrap gap-2 justify-center">
                   <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={handleStartGameFromSeed}>
                     Start game from seed
