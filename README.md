@@ -41,7 +41,8 @@ pnpm run lint
 - [x] Add counter of clics
 - [x] Add seed input
 - [x] Add play again button on winner page
-- [ ] Show number of moves and seed on winner page
+- [x] Show number of moves and seed on winner page
+- [ ] Add board size input
 - [ ] Add game seed in url
 - [ ] Show share button on winner page
 - [ ] Add github link to source code
@@ -50,9 +51,14 @@ pnpm run lint
 - [ ] Add login to save highscores per account
 - [ ] Add support for creating bigger boards
 - [ ] Add about page
+- [ ] Publish in steam
 - [ ] Multiplayer mode
 - [ ] Add badges in readme
 - [ ] More awesome features!
+
+V2
+
+- [ ] Add option to select images of dog, lion and background
 
 ### Acknowledgments
 

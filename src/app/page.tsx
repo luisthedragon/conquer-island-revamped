@@ -168,10 +168,12 @@ export default function HomePage() {
         ></div>
       </div>
       <div className="fixed-top-left">
-        <div className="p-2">
+        <div className="p-2 text-center">
           <h1 className="m-auto text-white text-center w-28 md:w-max mb-2">
             Congrats! You have defeated the lions!!
           </h1>
+          <p>Seed: {seed}</p>
+          <p>Number of moves: {nmoves}</p>
         </div>
       </div>
       <button className="bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={reloadPage}>Play again!</button>
