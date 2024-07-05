@@ -42,12 +42,14 @@ pnpm run lint
 - [x] Add seed input
 - [x] Add play again button on winner page
 - [x] Show number of moves and seed on winner page
+- [x] Fix bug when clicking tile in a 4x4 or bigger board, it does not flip correctly
 - [ ] Add board size input
 - [ ] Add game seed in url
 - [ ] Show share button on winner page
 - [ ] Add github link to source code
 - [ ] Improve seeding (Unique seed per board configuration)
 - [ ] Add highscores
+- [ ] Fix leading zero not disapearing in seed input
 - [ ] Add login to save highscores per account
 - [ ] Add support for creating bigger boards
 - [ ] Add about page

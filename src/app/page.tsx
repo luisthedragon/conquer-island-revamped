@@ -112,11 +112,11 @@ export default function HomePage() {
       adjIndexes = [...adjIndexes, { row: rowIndex - 1, col: colIndex }];
     }
     // RIGHT
-    if (colIndex <= 1) {
+    if (colIndex <= ncols - 2) {
       adjIndexes = [...adjIndexes, { row: rowIndex, col: colIndex + 1 }];
     }
     // DOWN
-    if (rowIndex <= 1) {
+    if (rowIndex <= nrows - 2) {
       adjIndexes = [...adjIndexes, { row: rowIndex + 1, col: colIndex }];
     }
     // LEFT
