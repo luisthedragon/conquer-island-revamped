@@ -46,7 +46,7 @@ pnpm run lint
 - [x] Add board size selector 
 - [x] Fix image size, it overflows on mobile
 - [x] Add github link to source code
-- [ ] Add game seed and board size in url (preferable)
+- [x] Add game seed and board size in url
 - [ ] Show share button on winner page
 - [ ] Improve seeding (Unique seed per board configuration)
 - [ ] Add highscores

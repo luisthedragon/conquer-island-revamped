@@ -2,16 +2,46 @@
 import { useState, useEffect } from "react";
 import seedrandom from "seedrandom";
 import GithubLink from "./components/GithubLink";
+import { useSearchParams } from 'next/navigation';
 
 export default function HomePage() {
   const MAX_SEED_VALUE = 1000000000;
   const [board, setBoard] = useState<number[][]>([]);
   const [winner, setWinner] = useState(false);
   const [nmoves, setNMoves] = useState(0);
-  const [inputSeed, setInputSeed] = useState(Math.floor(Math.random() * MAX_SEED_VALUE))
-  const [seed, setSeed] = useState(inputSeed);
-  const [boardSize, setBoardSize] = useState(3);
 
+  // https://stackoverflow.com/a/175787
+  const isNumeric = (str: string) => {
+    if (typeof str != "string") return false // we only process strings!  
+    return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+           !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+  }
+
+  // Obtain, clean and parse parameters
+  const searchParams = useSearchParams();
+  console.log(searchParams)
+  console.log('Board size:', searchParams.get('board-size'));
+  console.log('Seed:', searchParams.get('seed'));
+
+  // Board size can only be number between 3 and 6 inclusive
+  const obtainedBoardSize = searchParams.get('board-size')
+  let cleanBoardSize = null
+  if (obtainedBoardSize !== null && isNumeric(obtainedBoardSize) && parseInt(obtainedBoardSize) >= 3 && parseInt(obtainedBoardSize) <= 6) {
+    cleanBoardSize = parseInt(obtainedBoardSize)
+  }
+
+  // Seed can only be a number between 1 and 99999999
+  const obtainedSeed = searchParams.get('seed')
+  let cleanSeed = null
+  if (obtainedSeed !== null && isNumeric(obtainedSeed) && parseInt(obtainedSeed) >= 1 && parseInt(obtainedSeed) <= 99999999) {
+    cleanSeed = parseInt(obtainedSeed)
+  }
+
+  const randomInputSeedValue = Math.floor(Math.random() * MAX_SEED_VALUE)
+  const [inputSeed, setInputSeed] = useState(cleanSeed ?? randomInputSeedValue)
+  const [seed, setSeed] = useState(inputSeed);
+  const [boardSize, setBoardSize] = useState(cleanBoardSize ?? 3);
+  
   // We compute the winning state so that we can check if we won later
   const winningState: number[][] = [];
   for (let i = 0; i < boardSize; i++) {
