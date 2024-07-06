@@ -219,11 +219,11 @@ export default function HomePage() {
               </h3>
             </div>
             <div>{renderBoard()}</div>
+            <GithubLink />
           </>
         ) : (
           renderWinnerScreen()
         )}
-        <GithubLink />
       </div>
     </main>
   );
