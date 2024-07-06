@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import seedrandom from "seedrandom";
+import GithubLink from "./components/GithubLink";
 
 export default function HomePage() {
   const MAX_SEED_VALUE = 1000000000;
@@ -222,6 +223,7 @@ export default function HomePage() {
         ) : (
           renderWinnerScreen()
         )}
+        <GithubLink />
       </div>
     </main>
   );

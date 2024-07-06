@@ -45,9 +45,9 @@ pnpm run lint
 - [x] Fix bug when clicking tile in a 4x4 or bigger board, it does not flip correctly
 - [x] Add board size selector 
 - [x] Fix image size, it overflows on mobile
-- [ ] Add game seed in url
+- [x] Add github link to source code
+- [ ] Add game seed and board size in url (preferable)
 - [ ] Show share button on winner page
-- [ ] Add github link to source code
 - [ ] Improve seeding (Unique seed per board configuration)
 - [ ] Add highscores
 - [ ] Fix leading zero not disapearing in seed input
@@ -55,6 +55,7 @@ pnpm run lint
 - [ ] Add support for creating bigger boards
 - [ ] Add about page
 - [ ] Publish in steam
+- [ ] Add twitter link to my twitter
 - [ ] Multiplayer mode
 - [ ] Add badges in readme
 - [ ] More awesome features!
