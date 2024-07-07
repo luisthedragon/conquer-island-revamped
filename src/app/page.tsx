@@ -9,12 +9,12 @@ export default function HomePage() {
   const [board, setBoard] = useState<number[][]>([]);
   const [winner, setWinner] = useState(false);
   const [nmoves, setNMoves] = useState(0);
-  
+
   // https://stackoverflow.com/a/175787
   const isNumeric = (str: string) => {
     if (typeof str != "string") return false // we only process strings!  
     return !isNaN(parseInt(str)) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
-           !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+      !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
   }
 
   // Obtain, clean and parse parameters
@@ -41,7 +41,7 @@ export default function HomePage() {
   const [inputSeed, setInputSeed] = useState(cleanSeed ?? randomInputSeedValue)
   const [seed, setSeed] = useState(inputSeed);
   const [boardSize, setBoardSize] = useState(cleanBoardSize ?? 3);
-  
+
   // We compute the winning state so that we can check if we won later
   const winningState: number[][] = [];
   for (let i = 0; i < boardSize; i++) {
@@ -92,11 +92,11 @@ export default function HomePage() {
     // ];
     setBoard(newBoard);
   };
-  
+
   const copyUrlToClipboard = async () => {
     // const url = "https://conquer-island-revamped.vercel.app/?seed=15&board-size=4"
     const url = window.location.origin + "?seed=" + seed + "&board-size=" + boardSize
-    await navigator.clipboard.writeText(url); // 10s
+    await navigator.clipboard.writeText(`Hey, I just beat the game in ${nmoves} moves, try to beat my record: ${url}`);
   }
 
   const getImageUrl = (cellValue: number) => {
@@ -213,8 +213,10 @@ export default function HomePage() {
           <p>Number of moves: {nmoves}</p>
         </div>
       </div>
-      <button className="bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={copyUrlToClipboard}>Share</button>
-      <button className="bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={reloadPage}>Play again!</button>
+      <div className="flex flex-col gap-2">
+        <button className="bg-gray-500 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={copyUrlToClipboard}>Share</button>
+        <button className="bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={reloadPage}>Play again!</button>
+      </div>
     </div>
   );
 
