@@ -10,8 +10,6 @@ export default function HomePage() {
   const [winner, setWinner] = useState(false);
   const [nmoves, setNMoves] = useState(0);
   
-  const pathName = usePathname();
-
   // https://stackoverflow.com/a/175787
   const isNumeric = (str: string) => {
     if (typeof str != "string") return false // we only process strings!  
@@ -97,7 +95,7 @@ export default function HomePage() {
   
   const copyUrlToClipboard = async () => {
     // const url = "https://conquer-island-revamped.vercel.app/?seed=15&board-size=4"
-    const url = pathName + "?seed=" + seed + "&board-size=" + boardSize
+    const url = window.location.origin + "?seed=" + seed + "&board-size=" + boardSize
     await navigator.clipboard.writeText(url); // 10s
   }
 
@@ -210,6 +208,7 @@ export default function HomePage() {
           <h1 className="m-auto text-white text-center w-28 md:w-max mb-2">
             Congrats! You have defeated the lions!!
           </h1>
+          <p>Board size: {boardSize}</p>
           <p>Seed: {seed}</p>
           <p>Number of moves: {nmoves}</p>
         </div>
