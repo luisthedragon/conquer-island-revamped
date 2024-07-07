@@ -48,6 +48,10 @@ pnpm run lint
 - [x] Add github link to source code
 - [x] Add game seed and board size in url
 - [x] Show share button on winner page
+- [x] Add board size info in winner page
+- [x] Add chakraui toast
+- [ ] Add logo
+- [ ] Add sound effects
 - [ ] Improve seeding (Unique seed per board configuration)
 - [ ] Add highscores
 - [ ] Fix leading zero not disapearing in seed input
