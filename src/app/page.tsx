@@ -2,13 +2,15 @@
 import { useState, useEffect } from "react";
 import seedrandom from "seedrandom";
 import GithubLink from "./components/GithubLink";
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 export default function HomePage() {
   const MAX_SEED_VALUE = 1000000000;
   const [board, setBoard] = useState<number[][]>([]);
   const [winner, setWinner] = useState(false);
   const [nmoves, setNMoves] = useState(0);
+  
+  const pathName = usePathname();
 
   // https://stackoverflow.com/a/175787
   const isNumeric = (str: string) => {
@@ -92,6 +94,12 @@ export default function HomePage() {
     // ];
     setBoard(newBoard);
   };
+  
+  const copyUrlToClipboard = async () => {
+    // const url = "https://conquer-island-revamped.vercel.app/?seed=15&board-size=4"
+    const url = pathName + "?seed=" + seed + "&board-size=" + boardSize
+    await navigator.clipboard.writeText(url); // 10s
+  }
 
   const getImageUrl = (cellValue: number) => {
     return cellValue === 1
@@ -206,6 +214,7 @@ export default function HomePage() {
           <p>Number of moves: {nmoves}</p>
         </div>
       </div>
+      <button className="bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={copyUrlToClipboard}>Share</button>
       <button className="bg-stone-500 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={reloadPage}>Play again!</button>
     </div>
   );

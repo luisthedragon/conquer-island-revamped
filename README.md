@@ -47,7 +47,7 @@ pnpm run lint
 - [x] Fix image size, it overflows on mobile
 - [x] Add github link to source code
 - [x] Add game seed and board size in url
-- [ ] Show share button on winner page
+- [x] Show share button on winner page
 - [ ] Improve seeding (Unique seed per board configuration)
 - [ ] Add highscores
 - [ ] Fix leading zero not disapearing in seed input
