@@ -2,9 +2,11 @@
 import { useState, useEffect } from "react";
 import seedrandom from "seedrandom";
 import GithubLink from "./components/GithubLink";
-import { usePathname, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+import { useToast } from '@chakra-ui/react'
 
 export default function HomePage() {
+  const toast = useToast()
   const MAX_SEED_VALUE = 1000000000;
   const [board, setBoard] = useState<number[][]>([]);
   const [winner, setWinner] = useState(false);
@@ -97,6 +99,14 @@ export default function HomePage() {
     // const url = "https://conquer-island-revamped.vercel.app/?seed=15&board-size=4"
     const url = window.location.origin + "?seed=" + seed + "&board-size=" + boardSize
     await navigator.clipboard.writeText(`Hey, I just beat the game in ${nmoves} moves, try to beat my record: ${url}`);
+    toast({
+      title: 'Message copied to clipboard',
+      description: "Share with a friend to challenge them to beat your score",
+      status: 'success',
+      duration: 5000,
+      isClosable: true,
+    })
+
   }
 
   const getImageUrl = (cellValue: number) => {

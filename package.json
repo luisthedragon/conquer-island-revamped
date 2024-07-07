@@ -10,8 +10,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@chakra-ui/next-js": "^2.2.0",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@t3-oss/env-nextjs": "^0.10.1",
     "@types/seedrandom": "^3.0.8",
+    "framer-motion": "^11.2.13",
     "next": "^14.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",

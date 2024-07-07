@@ -1,3 +1,4 @@
+"use client"
 import { PiGithubLogo } from "react-icons/pi";
 
 export default function githubLink() {
